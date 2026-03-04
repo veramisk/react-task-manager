@@ -1,0 +1,105 @@
+html, body, #root {
+    height: 100%;
+}
+
+
+/* background of the entire page */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f3f4f6;
+
+
+}
+
+/* centering */
+.app-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* card */
+.app-container {
+    width: 420px;
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+button {
+    font-family: inherit; 
+    cursor: pointer; 
+    font-weight: 500;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    border-bottom: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    margin-bottom: 6px;
+}
+/* Style text of problem */
+.task-item span {
+    margin-left: 8px;
+    text-decoration: none;
+    color: #333;
+}
+
+.task-item span.completed {
+    text-decoration: line-through;
+    color: #999;
+}
+
+/* Input when editing */
+
+.task-item input[type="text"] {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 70%
+}
+
+.filters {
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  padding: 8px 14px;
+  margin-right: 8px;
+  border: none;
+  border-radius: 6px;
+  background-color: #4f46e5;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.filter-btn:hover {
+  background-color: #3730a3;
+  transform: translateY(-1px);
+}
+
+/* Buttons Edit/Save/Delete */
+.task-item button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #34db55;
+    color: white;
+}
+
+.task-item button:hover {
+    background-color: #2980b9;
+}
