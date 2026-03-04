@@ -1,11 +1,26 @@
 import { useState } from "react";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 function TaskItem({ task, onToggleTask, onDeleteTask, editingId, setEditingId, onEditChange }) {
   const isEditing = editingId === task.id;
   const [editValue, setEditValue] = useState(task.title);
+  const { attributes, listeners, setNodeRef, transform, transition } =
+  useSortable({ id: task.id });
+
+const style = {
+  transform: CSS.Transform.toString(transform),
+  transition,
+};
 
   return (
     
-    <li className="task-item">
+    <li
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
+      className="task-item"
+      >
 
       {/* Checkbox for completed */}
       <input

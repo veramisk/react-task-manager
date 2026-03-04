@@ -2,6 +2,16 @@ import { useState, useEffect } from "react";
 import TaskForm from "./components/TaskForm"; 
 import TaskList from "./components/TaskList";
 import './App.css';
+import {
+  DndContext,
+  closestCenter
+} from "@dnd-kit/core";
+
+import {
+  arrayMove,
+  SortableContext,
+  verticalListSortingStrategy
+} from "@dnd-kit/sortable";
 
 function App() {
   //     State tasks
@@ -68,12 +78,25 @@ function App() {
   );
   setTasks(updatedTasks);
 }
+// Drog and drop
+const handleDragEnd = (event) => {
+  const { active, over } = event;
 
+  if (!over) return;
+
+  if (active.id !== over.id) {
+    setTasks((items) => {
+      const oldIndex = items.findIndex(item => item.id === active.id);
+      const newIndex = items.findIndex(item => item.id === over.id);
+      return arrayMove(items, oldIndex, newIndex);
+    });
+  }
+};
   return (
     <div className="app-wrapper">
       <div className="app-container">
        <h1>Task Manager</h1>
-
+      {/* Filter buttons */}
       <div className="filters">
         <button className="filter-btn" onClick={() => setFilter('ALL')} >All</button>
         <button  className="filter-btn" onClick={() => setFilter('DONE')}>Done</button>
@@ -82,15 +105,24 @@ function App() {
 
     {/* Form and task list */}
       <TaskForm onAddTask={addTask} />
-      <TaskList
-      tasks={filteredTasks} 
-      onToggleTask={toggleTask} 
-      onDeleteTask={deleteTask} 
+
+       {/* Task list with drag & drop */}
+      
+      <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+      <SortableContext
+        items={filteredTasks.map(task => task.id)}
+         strategy={verticalListSortingStrategy}
+      >
+    <TaskList
+      tasks={filteredTasks}
+      onToggleTask={toggleTask}
+      onDeleteTask={deleteTask}
       editingId={editingId}
       setEditingId={setEditingId}
       onEditChange={onEditChange}
-
-        />
+    />
+  </SortableContext>
+</DndContext>
       </div>
     </div>
   );
