@@ -12,12 +12,15 @@ body {
 
 }
 
-/* centering */
+/* Centering */
+
 .app-wrapper {
+    display: flex;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: hsl(160, 14%, 96%);
 }
 /* card */
 .app-container {
