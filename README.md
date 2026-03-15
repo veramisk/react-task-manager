@@ -19,4 +19,4 @@ https://veramisk.github.io/react-task-manager
 - dnd-kit
 
 ## Screenshot
-![App Screenshot](Screenshot.png)
+![App Screenshot](Screenshot.jpg)
