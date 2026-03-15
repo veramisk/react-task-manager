@@ -2,16 +2,8 @@ import { useState, useEffect } from "react";
 import TaskForm from "./components/TaskForm"; 
 import TaskList from "./components/TaskList";
 import './App.css';
-import {
-  DndContext,
-  closestCenter
-} from "@dnd-kit/core";
-
-import {
-  arrayMove,
-  SortableContext,
-  verticalListSortingStrategy
-} from "@dnd-kit/sortable";
+import { DndContext, closestCenter } from "@dnd-kit/core";
+import { arrayMove, SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
 
 function App() {
   //     State tasks
